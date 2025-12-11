@@ -3,436 +3,503 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitaTech Worldwide | Excelência em Serviços</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>VitaTech Worldwide | Soluções Integradas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Variáveis de Cores (Theming) --- */
+        /* --- 1. Variáveis e Reset (Base Profissional) --- */
         :root {
-            /* Tema Claro (Padrão) */
-            --bg-body: #fdfbf7; /* Creme suave clássico */
-            --bg-card: #ffffff;
-            --text-main: #2c3e50;
-            --text-secondary: #555;
-            --border-color: #dcdcdc;
+            /* Cores Gerais */
+            --bg-body: #f8f9fa;
+            --surface: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border: #e9ecef;
             
-            --tech-color: #1a253a; /* Azul Marinho Profundo */
-            --health-color: #1e392a; /* Verde Floresta Profundo */
-            --accent: #b8860b; /* Dourado escuro para detalhes */
-            
-            --input-bg: #fff;
-            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            /* Cores Específicas */
+            --tech-primary: #004e92; /* Azul Corporativo */
+            --tech-accent: #000428;
+            --health-primary: #2d6a4f; /* Verde Profissional */
+            --health-accent: #1b4332;
+
+            /* UI Elements */
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Tema Escuro */
+        /* Dark Mode */
         body.dark-mode {
             --bg-body: #121212;
-            --bg-card: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --border-color: #333;
-            
-            --tech-color: #4da6ff; /* Azul mais claro para contraste */
-            --health-color: #4caf50; /* Verde mais claro para contraste */
-            --accent: #d4af37;
-            
-            --input-bg: #2c2c2c;
-            --shadow: 0 4px 15px rgba(0,0,0,0.5);
+            --surface: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border: #333;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* --- Reset e Base --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Lato', sans-serif; /* Fonte corpo moderna mas sóbria */
+            font-family: 'Open Sans', sans-serif;
             background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.8;
+            color: var(--text-primary);
+            transition: var(--transition);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif; /* Fonte Clássica */
-            font-weight: 700;
-        }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- Header Clássico --- */
-        header {
-            border-bottom: 3px solid var(--accent);
-            padding: 20px 0;
-            background-color: var(--bg-card);
-        }
-
-        .header-content {
+        /* --- 2. Navegação Global --- */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 5%;
+            background-color: var(--surface);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 2rem;
-            color: var(--text-main);
-            letter-spacing: 1px;
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .logo span { color: var(--accent); font-style: italic; }
 
-        /* Botão Dark Mode */
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--text-main);
-            color: var(--text-main);
-            padding: 8px 15px;
+        .mode-toggle {
             cursor: pointer;
-            border-radius: 30px;
-            font-family: 'Lato', sans-serif;
-            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .theme-toggle:hover {
-            background-color: var(--text-main);
-            color: var(--bg-card);
-        }
+        
+        .mode-toggle:hover { background-color: var(--border); }
 
-        /* --- Seção Dividida (Split) --- */
-        .split-section {
+        /* --- 3. Landing Page (Split Screen) --- */
+        #landing-screen {
             display: flex;
-            flex-wrap: wrap;
-            min-height: 60vh;
-            border-bottom: 1px solid var(--border-color);
+            height: calc(100vh - 80px); /* Altura total menos navbar */
+            width: 100%;
         }
 
-        .split-col {
+        .split-side {
             flex: 1;
-            min-width: 350px;
-            padding: 60px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            transition: var(--transition);
             position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 40px;
+            text-align: center;
         }
 
-        /* Coluna Informática */
-        .col-tech {
-            border-right: 1px solid var(--border-color);
-        }
-        .col-tech h2 { color: var(--tech-color); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--tech-color); display: inline-block;}
-        .col-tech ul li::before { content: '💻'; margin-right: 10px; }
-
-        /* Coluna Saúde */
-        .col-health {
-            
-        }
-        .col-health h2 { color: var(--health-color); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--health-color); display: inline-block;}
-        .col-health ul li::before { content: '🍎'; margin-right: 10px; }
-
-        .service-list {
-            list-style: none;
-            margin-top: 20px;
-            font-size: 1.1rem;
-        }
-        .service-list li {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .service-list li:last-child { border-bottom: none; }
-
-        .description {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: var(--text-secondary);
-        }
-
-        /* --- Agendamento (Estilo Papelaria Clássica) --- */
-        .booking-section {
-            padding: 80px 0;
-            background-color: var(--bg-body);
-        }
-
-        .form-card {
-            background-color: var(--bg-card);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 50px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        /* Detalhe estético de "Cantos" */
-        .form-card::before {
+        /* Overlay para imagem de fundo */
+        .split-side::before {
             content: '';
             position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid var(--accent);
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Imagem sutil */
+            z-index: 0;
+            transition: opacity 0.5s;
         }
+        
+        /* Lado Tecnologia */
+        .side-tech { background-color: var(--surface); border-right: 1px solid var(--border); }
+        .side-tech::before { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000'); }
+        .side-tech:hover { background-color: #f0f4f8; }
+        .dark-mode .side-tech:hover { background-color: #1a1a2e; }
+        .side-tech h2 { color: var(--tech-primary); }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-            color: var(--text-main);
-        }
+        /* Lado Saúde */
+        .side-health { background-color: var(--surface); }
+        .side-health::before { background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1000'); }
+        .side-health:hover { background-color: #f0f8f4; }
+        .dark-mode .side-health:hover { background-color: #1a2e22; }
+        .side-health h2 { color: var(--health-primary); }
 
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 2;
-        }
+        .content-wrapper { position: relative; z-index: 1; }
 
-        .form-group label {
+        .icon-large {
+            font-size: 4rem;
+            margin-bottom: 20px;
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--text-main);
-            font-family: 'Playfair Display', serif;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            font-family: 'Lato', sans-serif;
+        .split-side h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .split-side p { font-size: 1.1rem; color: var(--text-secondary); max-width: 400px; margin: 0 auto; }
+        
+        .btn-enter {
+            margin-top: 30px;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-enter:hover { transform: translateY(-3px); }
+
+        .btn-tech { background-color: var(--tech-primary); color: #fff; }
+        .btn-health { background-color: var(--health-primary); color: #fff; }
+
+
+        /* --- 4. Páginas Internas (Escondidas por padrão) --- */
+        .internal-page {
+            display: none; /* Oculto inicialmente */
+            padding: 40px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
             font-size: 1rem;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .back-btn:hover { color: var(--text-primary); text-decoration: underline; }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tech-theme h1 { color: var(--tech-primary); }
+        .health-theme h1 { color: var(--health-primary); }
+
+        /* Grid de Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
-        .form-control:focus {
+        .service-card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tech-theme .service-card { border-color: var(--tech-primary); }
+        .health-theme .service-card { border-color: var(--health-primary); }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.2rem; }
+        .service-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Formulário */
+        .form-section {
+            background: var(--surface);
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: #888;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 15px;
-            background-color: var(--text-main);
-            color: var(--bg-card);
+            padding: 16px;
             border: none;
-            font-size: 1.1rem;
-            font-family: 'Playfair Display', serif;
+            border-radius: 6px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            position: relative;
-            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
         }
 
-        .btn-submit:hover {
-            background-color: var(--accent);
-            color: #fff;
-        }
+        .btn-tech-submit { background-color: var(--tech-primary); }
+        .btn-tech-submit:hover { background-color: var(--tech-accent); }
+        
+        .btn-health-submit { background-color: var(--health-primary); }
+        .btn-health-submit:hover { background-color: var(--health-accent); }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: var(--bg-card);
-            border-top: 3px solid var(--accent);
-            margin-top: 40px;
-            color: var(--text-secondary);
-        }
-
-        /* Mobile Adjustments */
+        /* Mobile */
         @media (max-width: 768px) {
-            .split-section { flex-direction: column; }
-            .col-tech { border-right: none; border-bottom: 1px solid var(--border-color); }
-            .form-card { padding: 30px 20px; margin: 0 10px; }
+            #landing-screen { flex-direction: column; height: auto; }
+            .split-side { padding: 60px 20px; }
+            .form-section { padding: 30px 20px; }
+            .navbar { padding: 15px 20px; }
+            h1 { font-size: 2rem; }
         }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-content">
-            <div class="logo">VitaTech <span>Worldwide</span></div>
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i> Modo Escuro
-            </button>
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fas fa-globe-americas"></i> VitaTech <span style="font-weight:300">Worldwide</span>
         </div>
-    </header>
+        <button class="mode-toggle" onclick="toggleTheme()">
+            <i class="fas fa-adjust"></i> <span id="theme-text">Tema</span>
+        </button>
+    </nav>
 
-    <section class="split-section">
+    <section id="landing-screen">
         
-        <div class="split-col col-tech">
-            <h2><i class="fas fa-microchip"></i> Informática Geral</h2>
-            <p class="description">Soluções técnicas precisas para o mundo digital moderno.</p>
-            <ul class="service-list">
-                <li><strong>Manutenção de Hardware:</strong> Limpeza e montagem.</li>
-                <li><strong>Software & Sistemas:</strong> Formatação e otimização.</li>
-                <li><strong>Redes:</strong> Configuração segura de Wi-Fi e internet.</li>
-                <li><strong>Suporte Remoto e Presencial:</strong> Agilidade no atendimento.</li>
-            </ul>
+        <div class="split-side side-tech" onclick="showPage('tech')">
+            <div class="content-wrapper">
+                <i class="fas fa-laptop-code icon-large" style="color: var(--tech-primary)"></i>
+                <h2>Tecnologia & TI</h2>
+                <p>Suporte, Redes e Manutenção para empresas e uso doméstico.</p>
+                <button class="btn-enter btn-tech">Acessar Área Técnica</button>
+            </div>
         </div>
 
-        <div class="split-col col-health">
-            <h2><i class="fas fa-heartbeat"></i> Saúde & Nutrição</h2>
-            <p class="description">Cuidado dedicado para a longevidade e performance física.</p>
-            <ul class="service-list">
-                <li><strong>Melhor Idade:</strong> Nutrição focada em vitalidade e controle de patologias para idosos.</li>
-                <li><strong>Performance (Academia):</strong> Dietas para hipertrofia e definição muscular.</li>
-                <li><strong>Reeducação Alimentar:</strong> Planos sustentáveis de longo prazo.</li>
-                <li><strong>Suplementação:</strong> Orientação baseada em evidências.</li>
-            </ul>
+        <div class="split-side side-health" onclick="showPage('health')">
+            <div class="content-wrapper">
+                <i class="fas fa-heartbeat icon-large" style="color: var(--health-primary)"></i>
+                <h2>Saúde & Nutrição</h2>
+                <p>Performance física e longevidade para idosos e atletas.</p>
+                <button class="btn-enter btn-health">Acessar Área de Saúde</button>
+            </div>
         </div>
 
     </section>
 
-    <section class="booking-section">
+
+    <div id="tech-page" class="internal-page tech-theme">
         <div class="container">
-            <div class="form-card">
-                <h3 class="section-title">Solicitação de Atendimento</h3>
-                <p style="text-align: center; margin-bottom: 30px; color: var(--text-secondary);">
-                    Preencha o formulário abaixo. Geraremos uma ordem de serviço digital diretamente em seu WhatsApp.
-                </p>
+            <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar à seleção</button>
+            
+            <header class="page-header">
+                <h1>Serviços de Informática</h1>
+                <p>Excelência técnica para resolver seus problemas digitais.</p>
+            </header>
 
-                <form id="agendamentoForm">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-tools"></i> Manutenção de Hardware</h3>
+                    <p>Limpeza interna, troca de pasta térmica e montagem de computadores gamer e workstation.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-network-wired"></i> Redes & Wi-Fi</h3>
+                    <p>Configuração de roteadores, repetidores e cabeamento estruturado para máxima velocidade.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-shield-alt"></i> Software & Segurança</h3>
+                    <p>Formatação, remoção de vírus, backup de dados e instalação de pacote Office/Windows.</p>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 style="margin-bottom: 20px; color: var(--tech-primary);">Abrir Chamado Técnico</h3>
+                <form id="form-tech">
                     <div class="form-group">
-                        <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" class="form-control" placeholder="Digite seu nome..." required>
+                        <label>Nome do Cliente/Empresa</label>
+                        <input type="text" id="tech-nome" required placeholder="Digite seu nome">
                     </div>
-
                     <div class="form-group">
-                        <label for="departamento">Departamento de Interesse</label>
-                        <select id="departamento" class="form-control" onchange="atualizarOpcoes()" required>
-                            <option value="" disabled selected>Selecione uma opção...</option>
-                            <option value="Informática">Informática / Suporte Técnico</option>
-                            <option value="Nutrição">Nutrição e Saúde</option>
+                        <label>Tipo de Equipamento</label>
+                        <select id="tech-device">
+                            <option>Computador Desktop</option>
+                            <option>Notebook</option>
+                            <option>Impressora/Periférico</option>
+                            <option>Rede/Internet</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="servicoEspecifico">Serviço Específico</label>
-                        <select id="servicoEspecifico" class="form-control" required>
-                            <option value="" disabled selected>Aguardando seleção do departamento...</option>
-                        </select>
+                        <label>Descrição do Problema</label>
+                        <textarea id="tech-desc" rows="3" placeholder="Ex: O computador está lento e desligando sozinho..."></textarea>
                     </div>
-
                     <div class="form-group">
-                        <label for="dataHora">Disponibilidade (Data/Hora)</label>
-                        <input type="text" id="dataHora" class="form-control" placeholder="Ex: Preferência pela manhã...">
+                        <label>Data Preferencial</label>
+                        <input type="text" id="tech-data" placeholder="Dia e Hora">
                     </div>
-
-                    <div class="form-group">
-                        <label for="mensagem">Detalhes Adicionais</label>
-                        <textarea id="mensagem" class="form-control" rows="4" placeholder="Descreva brevemente sua necessidade..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn-submit btn-tech-submit">
                         <i class="fab fa-whatsapp"></i> Enviar Solicitação
                     </button>
                 </form>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer>
+
+    <div id="health-page" class="internal-page health-theme">
         <div class="container">
-            <p><strong>VitaTech Worldwide</strong> &copy; 2025</p>
-            <p>Atendimento Exclusivo via WhatsApp: (21) 98024-1228</p>
-            <p style="font-size: 0.9rem; margin-top: 10px;">Rio de Janeiro, Brasil</p>
+            <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Voltar à seleção</button>
+
+            <header class="page-header">
+                <h1>Nutrição & Performance</h1>
+                <p>Planos personalizados baseados em ciência para sua meta.</p>
+            </header>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-user-plus"></i> Melhor Idade (Idosos)</h3>
+                    <p>Foco na manutenção da massa magra (sarcopenia), controle de diabetes/hipertensão e vitalidade.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-dumbbell"></i> Hipertrofia & Academia</h3>
+                    <p>Estratégias nutricionais pré e pós-treino para ganho de massa muscular e definição.</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-carrot"></i> Reeducação Alimentar</h3>
+                    <p>Aprenda a comer bem sem terrorismo nutricional. Planos adaptados à sua rotina.</p>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 style="margin-bottom: 20px; color: var(--health-primary);">Agendar Consulta Nutricional</h3>
+                <form id="form-health">
+                    <div class="form-group">
+                        <label>Nome do Paciente</label>
+                        <input type="text" id="health-nome" required placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Objetivo Principal</label>
+                        <select id="health-obj">
+                            <option>Saúde do Idoso / Longevidade</option>
+                            <option>Hipertrofia (Ganho de Massa)</option>
+                            <option>Emagrecimento</option>
+                            <option>Performance Esportiva</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Idade</label>
+                        <input type="number" id="health-idade" style="width: 100px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Observações / Restrições</label>
+                        <textarea id="health-obs" rows="3" placeholder="Ex: Sou diabético, tenho alergia a camarão..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Data Preferencial</label>
+                        <input type="text" id="health-data" placeholder="Dia e Hora">
+                    </div>
+                    <button type="submit" class="btn-submit btn-health-submit">
+                        <i class="fab fa-whatsapp"></i> Solicitar Agendamento
+                    </button>
+                </form>
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // --- Lógica do Modo Escuro ---
-        function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('themeToggle');
-            const icon = btn.querySelector('i');
+        // --- Navegação entre Páginas ---
+        function showPage(page) {
+            // Esconde a landing
+            document.getElementById('landing-screen').style.display = 'none';
             
-            body.classList.toggle('dark-mode');
+            // Esconde todas as internas primeiro
+            document.getElementById('tech-page').style.display = 'none';
+            document.getElementById('health-page').style.display = 'none';
 
-            if (body.classList.contains('dark-mode')) {
-                btn.innerHTML = '<i class="fas fa-sun"></i> Modo Claro';
+            // Mostra a selecionada e rola pro topo
+            if(page === 'tech') {
+                document.getElementById('tech-page').style.display = 'block';
             } else {
-                btn.innerHTML = '<i class="fas fa-moon"></i> Modo Escuro';
+                document.getElementById('health-page').style.display = 'block';
             }
+            window.scrollTo(0,0);
         }
 
-        // --- Lógica do Formulário Dinâmico ---
-        function atualizarOpcoes() {
-            const departamento = document.getElementById("departamento").value;
-            const servicoSelect = document.getElementById("servicoEspecifico");
-            
-            servicoSelect.innerHTML = ""; // Limpa opções anteriores
-
-            let opcoes = [];
-
-            if (departamento === "Informática") {
-                opcoes = [
-                    "Formatação e Instalação de OS",
-                    "Remoção de Vírus/Lentidão",
-                    "Montagem/Upgrade de PC",
-                    "Configuração de Rede/Wi-Fi",
-                    "Consultoria Técnica Geral"
-                ];
-            } else if (departamento === "Nutrição") {
-                opcoes = [
-                    "Nutrição para Idosos (Geriatria)",
-                    "Hipertrofia e Desempenho (Academia)",
-                    "Emagrecimento Saudável",
-                    "Plano Alimentar Personalizado"
-                ];
-            }
-
-            // Adiciona a opção padrão
-            let defaultOption = document.createElement("option");
-            defaultOption.text = "Selecione o serviço...";
-            defaultOption.value = "";
-            defaultOption.disabled = true;
-            defaultOption.selected = true;
-            servicoSelect.add(defaultOption);
-
-            // Popula com as novas opções
-            opcoes.forEach(op => {
-                let option = document.createElement("option");
-                option.text = op;
-                option.value = op;
-                servicoSelect.add(option);
-            });
+        function goHome() {
+            document.getElementById('tech-page').style.display = 'none';
+            document.getElementById('health-page').style.display = 'none';
+            document.getElementById('landing-screen').style.display = 'flex';
         }
 
-        // --- Envio para WhatsApp ---
-        document.getElementById("agendamentoForm").addEventListener("submit", function(e) {
+        // --- Dark Mode ---
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // --- Envio WhatsApp (Formulário TI) ---
+        document.getElementById('form-tech').addEventListener('submit', function(e) {
             e.preventDefault();
+            const nome = document.getElementById('tech-nome').value;
+            const device = document.getElementById('tech-device').value;
+            const desc = document.getElementById('tech-desc').value;
+            const data = document.getElementById('tech-data').value;
 
-            const nome = document.getElementById("nome").value;
-            const depto = document.getElementById("departamento").value;
-            const servico = document.getElementById("servicoEspecifico").value;
-            const data = document.getElementById("dataHora").value;
-            const obs = document.getElementById("mensagem").value;
-            const whatsappNumber = "5521980241228";
+            const msg = `*CHAMADO TÉCNICO - VITATECH* 💻%0a` +
+                        `------------------------------%0a` +
+                        `👤 *Cliente:* ${nome}%0a` +
+                        `🖥️ *Equipamento:* ${device}%0a` +
+                        `⚠️ *Problema:* ${desc}%0a` +
+                        `📅 *Data Sugerida:* ${data}`;
 
-            // Formatação da mensagem (estilo nota formal)
-            const text = 
-`*SOLICITAÇÃO DE ATENDIMENTO - VITATECH*
---------------------------------
-👤 *Cliente:* ${nome}
-📂 *Departamento:* ${depto}
-📌 *Serviço:* ${servico}
-🗓️ *Disponibilidade:* ${data}
---------------------------------
-📝 *Detalhes:* ${obs}
---------------------------------
-_Aguardando confirmação._`;
+            window.open(`https://wa.me/5521980241228?text=${msg}`, '_blank');
+        });
 
-            // Codifica para URL
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-            
-            window.open(url, '_blank');
+        // --- Envio WhatsApp (Formulário Saúde) ---
+        document.getElementById('form-health').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('health-nome').value;
+            const obj = document.getElementById('health-obj').value;
+            const idade = document.getElementById('health-idade').value;
+            const obs = document.getElementById('health-obs').value;
+            const data = document.getElementById('health-data').value;
+
+            const msg = `*AGENDAMENTO NUTRIÇÃO - VITATECH* 🍎%0a` +
+                        `------------------------------%0a` +
+                        `👤 *Paciente:* ${nome} (${idade} anos)%0a` +
+                        `🎯 *Objetivo:* ${obj}%0a` +
+                        `📝 *Obs:* ${obs}%0a` +
+                        `📅 *Data Sugerida:* ${data}`;
+
+            window.open(`https://wa.me/5521980241228?text=${msg}`, '_blank');
         });
     </script>
 </body>
